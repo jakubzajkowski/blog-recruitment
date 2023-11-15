@@ -11,8 +11,22 @@ class PostController {
         $result = $this->database->query("SELECT * FROM `posts` ORDER BY date DESC");
         return $this->database->fetchArray($result);
     }
-    public function getPost(string $id):array{
+    public function getPost(int $id):array{
         $result = $this->database->query("SELECT * FROM `posts` WHERE id=$id");
         return $this->database->fetchArray($result);
+    }
+    public function updatePost(int $id,string $title,string $description,string $content, string $author, string $img){
+        $result = $this->database->query("UPDATE tabela SET title = $title, description = $description,
+                    content=$content, author = $author, img = $img  WHERE id=$id");
+        return $this->database->fetchArray($result);
+    }
+    public function createPost(string $title,string $description,string $content, string $author, string $img){
+        $result = $this->database->query("INSERT INTO `posts`(`title`, `description`, `content`, `author`, `img`)
+                    VALUES ($title, $description, $content, $author, $img)");
+        return$this->database->fetchArray($result);
+    }
+    public function deletePost(int $id){
+        $result = $this->database->query("DELETE FROM `posts` WHERE id=$id");
+        return$this->database->fetchArray($result);
     }
 }

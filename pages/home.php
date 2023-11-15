@@ -11,7 +11,8 @@ $posts = $postController->getPosts();
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Cars Blog</title>
-    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <script src="/blog/js/dist/home.bundle.js" defer></script>
     <?php
     include "./partial/style.php"
     ?>
@@ -25,23 +26,8 @@ $posts = $postController->getPosts();
     <main>
         <div class="mx-auto w-75 my-5">
             <h2>See Our Latest Posts:</h2>
-            <div class="row align-items-stretch">
-                <?php
-                foreach ($posts as $post) {
-                    echo '<div class="col-md-4">';
-                    echo '<div class="card d-flex flex-column my-2">';
-                    echo '<div class="card-body">';
-                    echo '<a class="card-link" href="/blog/post?id=' .$post['id']. '">';
-                    echo '<img class="card-img" loading="lazy" src="' . $post['img'] . '" alt="Img">';
-                    echo '<h5 class="card-title">' . $post['title'] . '</h5>';
-                    echo '<p class="card-text">' . $post['author'] . '</p>';
-                    echo '</a>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '</div>';
-                }
-                $postController->database->close();
-                ?>
+            <div class="cards-container row align-items-stretch">
+                Please Wait Loading...
             </div>
         </div>
     </main>

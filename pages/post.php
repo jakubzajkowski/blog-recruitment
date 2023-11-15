@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Post</title>
+    <script src="/blog/js/dist/post.bundle.js" defer></script>
     <?php
     include "../partial/style.php"
     ?>
@@ -16,35 +17,8 @@
     include "../partial/header.php"
     ?>
 
-    <?php
-    $title='';
-    $img='';
-    $description='';
-    $content='';
-    $author='';
-    $date='';
-        if (isset($_GET['id'])) {
-            $id = $_GET['id'];
-            $postController = new \app\src\PostController();
-            $post = $postController->getPost($id)[0];
-            $title=$post['title'];
-            $img=$post['img'];
-            $description=$post['description'];
-            $content=$post['content'];
-            $author=$post['author'];
-            $date=$post['date'];
-        } else {
-            echo 'id not provided in the URL.';
-        }
-    ?>
-
-    <main class="mx-auto w-75 my-5">
-        <h1><?php echo $title ?></h1>
-        <h5 class="my-3"><?php echo $description ?></h5>
-        <img class="w-50" src="<?php echo $img ?>" alt="car" loading="lazy">
-        <p class="my-3"><?php echo $content ?></p>
-        <p class="my-3"><?php echo $author ?></p>
-        <p class="my-3">Date: <?php echo substr($date,0,10) ?></p>
+    <main class="post-container mx-auto w-75 my-5">
+        Please Wait Loading...
     </main>
 
     <?php
