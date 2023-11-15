@@ -11,10 +11,10 @@
                 <a class="nav-link" href="/blog">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/blog/admin.php">Admin</a>
+                <a class="nav-link" href="/blog/admin">Admin</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/blog/pictures.php">Pictures</a>
+                <a class="nav-link" href="/blog/pictures">Pictures</a>
             </li>
         </ul>
     </div>
