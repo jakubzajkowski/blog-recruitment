@@ -11,27 +11,44 @@ $posts = $postController->getPosts();
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Cars Blog</title>
+    <link rel="stylesheet" href="css/home.css">
+    <?php
+    include "./partial/style.php"
+    ?>
 </head>
 <body>
-    <?php
-    include "./partial/header.php"
-    ?>
-
-    <div class="container">
-    <div class="row">
+    <header>
         <?php
-        foreach ($posts as $post) {
-            echo '<div class="col-md-3">';
-            echo '<div class="card">';
-            echo '<h5 class="card-title">' . $post['title'] . '</h5>';
-            echo '</div>';
-            echo '</div>';
-        }
+        include "./partial/header.php"
         ?>
-    </div>
-    </div>
+    </header>
+    <main>
+        <div class="mx-auto w-75 my-5">
+            <h2>See Our Latest Posts:</h2>
+            <div class="row align-items-stretch">
+                <?php
+                foreach ($posts as $post) {
+                    echo '<div class="col-md-4">';
+                    echo '<div class="card d-flex flex-column my-2">';
+                    echo '<div class="card-body">';
+                    echo '<a class="card-link" href="/blog/post.php?id=' .$post['id']. '">';
+                    echo '<img class="card-img" loading="lazy" src="' . $post['img'] . '" alt="Img">';
+                    echo '<h5 class="card-title">' . $post['title'] . '</h5>';
+                    echo '<p class="card-text">' . $post['author'] . '</p>';
+                    echo '</a>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                }
+                $postController->database->close();
+                ?>
+            </div>
+        </div>
+    </main>
 
-
+    <?php
+    include "./partial/footer.php"
+    ?>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
