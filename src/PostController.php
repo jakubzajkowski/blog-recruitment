@@ -16,17 +16,17 @@ class PostController {
         return $this->database->fetchArray($result);
     }
     public function updatePost(int $id,string $title,string $description,string $content, string $author, string $img){
-        $result = $this->database->query("UPDATE tabela SET title = $title, description = $description,
-                    content=$content, author = $author, img = $img  WHERE id=$id");
+        $query="UPDATE `posts` SET title = $title, description = $description,content=$content, author = $author, img = $img  WHERE id=$id";
+        $result = $this->database->query($query);
         return $this->database->fetchArray($result);
     }
     public function createPost(string $title,string $description,string $content, string $author, string $img){
-        $result = $this->database->query("INSERT INTO `posts`(`title`, `description`, `content`, `author`, `img`)
-                    VALUES ($title, $description, $content, $author, $img)");
+        $query="INSERT INTO `posts`(`title`, `description`, `content`, `author`, `img`) VALUES ($title, $description, $content, $author, $img)";
+        $result = $this->database->query($query);
         return$this->database->fetchArray($result);
     }
     public function deletePost(int $id){
         $result = $this->database->query("DELETE FROM `posts` WHERE id=$id");
-        return$this->database->fetchArray($result);
+        return $result;
     }
 }
