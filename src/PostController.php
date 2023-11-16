@@ -26,7 +26,13 @@ class PostController {
         return$this->database->fetchArray($result);
     }
     public function deletePost(int $id){
-        $result = $this->database->query("DELETE FROM `posts` WHERE id=$id");
-        return $result;
+        $check = $this->database->query("SELECT * FROM `posts` WHERE id=$id");
+        if ($check){
+            $result = $this->database->query("DELETE FROM `posts` WHERE id=$id");
+            return "Post deleted";
+        }
+        else{
+            return "No post with that id";
+        }
     }
 }

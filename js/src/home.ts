@@ -1,5 +1,5 @@
 import axios from "axios";
-import {PostModel} from "./models/post.model";
+import {PostResponseModel} from "./models/postResponse.model";
 import {httpPolling} from "./utils/polling";
 
 const pollTime:number=2000;
@@ -20,9 +20,9 @@ const card = (imgUrl: string, title: string, author: string, id: number):string=
 }
 const fetchData=():void=>{
     axios.get("http://localhost/blog/api/posts/")
-        .then((res:{data:PostModel[]}):void=>{
+        .then((res:{data:PostResponseModel[]}):void=>{
             let content :string= '';
-            res.data.forEach((post:PostModel)=>content+=card(post.img,post.title,post.author,post.id))
+            res.data.forEach((post:PostResponseModel)=>content+=card(post.img,post.title,post.author,post.id))
             cardsContainer.innerHTML=content;
         }).catch(err=>cardsContainer.innerHTML="Something Don't Work We Cannot Download the Sources")
 }

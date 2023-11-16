@@ -1,5 +1,5 @@
 import axios from "axios";
-import {PostModel} from "./models/post.model";
+import {PostResponseModel} from "./models/postResponse.model";
 import {httpPolling} from "./utils/polling";
 
 const pollTime:number=2000;
@@ -18,7 +18,7 @@ const fetchData=():void=>{
     const urlParams : URLSearchParams = new URLSearchParams(window.location.search);
     const id : string = urlParams.get('id') as string;
     axios.get(`http://localhost/blog/api/posts/?id=${id}`)
-        .then((res:{data:PostModel}):void=>{
+        .then((res:{data:PostResponseModel}):void=>{
             const {data} = res;
             postContainer.innerHTML=post(data.img, data.title, data.description, data.author, data.content, data.date);
         }).catch(err=>postContainer.innerHTML="Something Don't Work We Cannot Download the Sources")
