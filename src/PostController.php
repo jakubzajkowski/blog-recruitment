@@ -21,9 +21,16 @@ class PostController {
         return $this->database->fetchArray($result);
     }
     public function createPost(string $title,string $description,string $content, string $author, string $img){
-        $query="INSERT INTO `posts`(`title`, `description`, `content`, `author`, `img`) VALUES ('$title', '$description', '$content', '$author', '$img')";
-        $result = $this->database->query($query);
-        return$this->database->fetchArray($result);
+        $query = "INSERT INTO `posts`(`title`, `description`, `content`, `author`, `img`) VALUES (:title, :description, :content, :author, :img)";
+        $statement = $this->database->pdo->prepare($query);
+        $statement->bindParam(':title', $title);
+        $statement->bindParam(':description', $description);
+        $statement->bindParam(':content', $content);
+        $statement->bindParam(':author', $author);
+        $statement->bindParam(':img', $img);
+
+        $statement->execute();
+        return "added";
     }
     public function deletePost(int $id){
         $check = $this->database->query("SELECT * FROM `posts` WHERE id=$id");

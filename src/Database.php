@@ -7,7 +7,7 @@ use PDOException;
 
 class Database
 {
-    private $pdo;
+    public $pdo;
     private string $host;
     private string $username;
     private string $password;

@@ -51,7 +51,11 @@ const fetchData=():void=>{
         .then((res:{data:PostResponseModel[]}):void=>{
             let content :string= '';
             res.data.forEach((post:PostResponseModel)=>content+=card(post.title,post.description,post.id))
-            listContainer.innerHTML=content;
+            if (res.data.length==0){
+                listContainer.innerHTML=`<h4 class="my-3">You have No Posts!!!</h4>`;
+            }else {
+                listContainer.innerHTML=content;
+            }
             addDeleteButtonListener();
         }).catch(err=>listContainer.innerHTML="Something Don't Work We Cannot Download the Sources")
 }
