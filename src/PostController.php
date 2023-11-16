@@ -21,7 +21,7 @@ class PostController {
         return $this->database->fetchArray($result);
     }
     public function createPost(string $title,string $description,string $content, string $author, string $img){
-        $query="INSERT INTO `posts`(`title`, `description`, `content`, `author`, `img`) VALUES ($title, $description, $content, $author, $img)";
+        $query="INSERT INTO `posts`(`title`, `description`, `content`, `author`, `img`) VALUES ('$title', '$description', '$content', '$author', '$img')";
         $result = $this->database->query($query);
         return$this->database->fetchArray($result);
     }

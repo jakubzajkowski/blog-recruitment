@@ -15,14 +15,14 @@
 <body>
     <header>
         <?php
-        include "../partial/header.php"
+            include "../partial/header.php"
         ?>
     </header>
     <main>
         <div class="container mt-5">
 
             <h2>Add New Post:</h2>
-            <form id="postForm">
+            <form id="postForm" action="../api/add-post/index.php" method="POST" enctype="multipart/form-data" >
                 <div class="form-group">
                     <label for="postTitle">Title:</label>
                     <input type="text" class="form-control" id="postTitle" name="title" required>
@@ -41,14 +41,14 @@
                 </div>
                 <div class="form-group">
                     <label for="postImage">Upload Image:</label>
-                    <input type="file" class="form-control-file" id="postImage" name="image[]" accept="image/*" multiple>
+                    <input type="file" class="form-control-file" id="postImage" name="img" accept="image/*" required>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary" name="submit">Submit</button>
             </form>
-
             <hr>
 
             <h2>Post List:</h2>
+
             <ul id="postList" class="list-group">
 
             </ul>
