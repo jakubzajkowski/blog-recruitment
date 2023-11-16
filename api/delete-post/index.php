@@ -11,6 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result = $postController->deletePost($id);
         echo $result;
     } catch (Error $e) {
-        echo json_encode(['error' => $e]);
+        echo "Post not Deleted";
     }
 }

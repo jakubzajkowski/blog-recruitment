@@ -20,7 +20,6 @@
     </header>
     <main>
         <div class="container mt-5">
-
             <h2>Add New Post:</h2>
             <form id="postForm" action="../api/add-post/index.php" method="POST" enctype="multipart/form-data" >
                 <div class="form-group">
