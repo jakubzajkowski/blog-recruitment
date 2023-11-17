@@ -16,7 +16,7 @@ class PostController {
         return $this->database->fetchArray($result);
     }
     public function updatePost(int $id,string $title,string $description,string $content, string $author, string $img){
-        $query="UPDATE `posts` SET title = :title, description = :description,content=:content, author = :author, img = :img  WHERE id=:id";
+        $query="UPDATE `posts` SET title = :title, description = :description,content=:content, author = :author, img =:img  WHERE id=:id";
         $statement = $this->database->pdo->prepare($query);
         $statement->bindParam(':title', $title);
         $statement->bindParam(':description', $description);

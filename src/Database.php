@@ -12,6 +12,7 @@ class Database
     private string $username;
     private string $password;
     private string $database;
+    private string $table='posts';
 
     public function __construct()
     {
@@ -44,7 +45,13 @@ class Database
     {
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
-
+    public function migrate()
+    {
+        $query="CREATE TABLE `$this->table`(id INT PRIMARY KEY AUTO_INCREMENT,
+                title VARCHAR(255),description VARCHAR(255),content VARCHAR(65535),author VARCHAR(255),img VARCHAR(255),date DATE DEFAULT CURRENT_DATE)";
+        $result = $this->query($query);
+        $this->close();
+    }
     public function close(): void
     {
         $this->pdo = null;

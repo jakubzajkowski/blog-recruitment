@@ -23,5 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     } catch (Error $e) {
         echo "Error not added";
+        header("Location: /blog/admin");
+        exit;
     }
 }

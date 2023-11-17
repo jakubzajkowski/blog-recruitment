@@ -37,3 +37,27 @@ export const updateAlertContent=(id:string):string => {
             </form>
         `
 }
+
+export const cardContentForHome = (imgUrl: string, title: string, author: string, id: number):string=> {
+    return `<div class="col-md-4">
+                        <div class="card d-flex flex-column my-2">
+                            <div class="card-body">
+                                <a class="card-link" href="/blog/post?id=${id}">
+                                    <img class="card-img" loading="lazy" src="${imgUrl}" alt="Img">
+                                    <h5 class="card-title">${title}</h5>
+                                    <p class="card-text">${author}</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>`
+}
+
+export const contentForPost = (img: string, title: string, description:string, author: string, content: string, date: string):string=> {
+    return `<h1>${title}</h1>
+            <h5 class="my-3">${description}</h5>
+            <img class="w-50" src="${img}" alt="car" loading="lazy">
+            <p class="my-3">${content}</p>
+            <p class="my-3">${author}</p>
+            <p class="my-3">Date: ${date}</p>
+    `
+}

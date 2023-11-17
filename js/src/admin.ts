@@ -4,7 +4,7 @@ import {httpPolling} from "./utils/polling";
 import Swal, {SweetAlertResult} from 'sweetalert2'
 import {DeleteRequestModel} from "./models/deleteRequest.model";
 import {postContentForAdmin,updateAlertContent} from "./template/templates";
-import {addUpdateButtonListener,addDeleteButtonListener} from "./listeners/listeners";
+import {addListener} from "./listeners/listeners";
 
 const pollTime:number=2000;
 const listContainer : HTMLElement = document.querySelector(".list-group") as HTMLElement;
@@ -20,12 +20,12 @@ const showDeleteConfirmation = (postId: string) => {
         confirmButtonText: 'Yes, delete it!'
     }).then((result:SweetAlertResult):void => {
         if (result.isConfirmed) {
-            handelDelete(postId)
+            handleDelete(postId)
             Swal.fire('Deleted!', 'Your post has been deleted.', 'success');
         }
     });
 };
-const handelDelete=(id:string):void=>{
+const handleDelete=(id:string):void=>{
     const data : DeleteRequestModel= {id:id}
     axios.post("http://localhost/blog/api/delete-post/index.php",data,{ headers: { 'Content-Type': 'application/json' } })
         .then(({data}):void=>console.log(data)).catch((err)=>console.log(err))
@@ -40,8 +40,8 @@ const fetchData=():void=>{
             }else {
                 listContainer.innerHTML=content;
             }
-            addDeleteButtonListener(showDeleteConfirmation);
-            addUpdateButtonListener(showUpdateModal)
+            addListener(showDeleteConfirmation,".btn--delete")
+            addListener(showUpdateModal,".btn--update")
         }).catch(err=>listContainer.innerHTML="Something Don't Work We Cannot Download the Sources")
 }
 fetchData()
@@ -52,6 +52,7 @@ const showUpdateModal = (postId: string) => {
         title: 'Update This Post',
         html: updateAlertContent(postId),
         icon: 'info',
+        showConfirmButton: true,
         confirmButtonText:'Close'
     })
 }

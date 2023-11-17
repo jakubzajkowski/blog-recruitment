@@ -13,9 +13,6 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/blog/admin">Admin</a>
             </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="/blog/pictures">Pictures</a>
-            </li>
         </ul>
     </div>
 </nav>
